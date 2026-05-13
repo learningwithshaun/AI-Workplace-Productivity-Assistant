@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
-import { Package } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 import { toast } from 'sonner';
 import { Link } from '@tanstack/react-router';
 
@@ -80,8 +80,10 @@ export function LoginPage() {
 
   const Logo = () => (
     <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-      <Package className="h-5 w-5 text-landing-dark" />
-      <span className="text-[15px] font-medium text-landing-dark tracking-tight">AssetWise</span>
+      <div className="flex h-6 w-6 items-center justify-center rounded-md bg-landing-dark text-landing-light">
+        <Sparkles className="h-3.5 w-3.5" />
+      </div>
+      <span className="text-[15px] font-medium text-landing-dark tracking-tight">Workplace AI</span>
     </Link>
   );
 
