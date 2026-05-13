@@ -63,8 +63,7 @@
   --popover: oklch(0.215 0 0);
   --popover-foreground: oklch(1 0 0);
 
-  /* Primary — modern AI green #10a37f */
-  --primary: oklch(0.65 0.13 162);
+  --primary: #ffffff;
   --primary-foreground: oklch(0.16 0 0);
 
   /* Secondary surface = #1a1a1a */
@@ -83,7 +82,7 @@
   /* Borders — subtle #2a2a2a */
   --border: oklch(0.255 0 0);
   --input: oklch(0.255 0 0);
-  --ring: oklch(0.65 0.13 162);
+  --ring: #000000;
 
   --chart-1: oklch(0.65 0.13 162);
   --chart-2: oklch(0.6 0.118 200);
@@ -94,7 +93,7 @@
   /* Sidebar — slightly darker than main bg */
   --sidebar: oklch(0.145 0 0);
   --sidebar-foreground: oklch(0.88 0 0);
-  --sidebar-primary: oklch(0.65 0.13 162);
+  --sidebar-primary: #bebebe;
   --sidebar-primary-foreground: oklch(0.16 0 0);
   --sidebar-accent: oklch(0.22 0 0);
   --sidebar-accent-foreground: oklch(1 0 0);
@@ -159,6 +158,10 @@
 @layer base {
   * {
     border-color: var(--color-border);
+  }
+
+  input, textarea {
+    color: #000000;
   }
 
   html, body {
