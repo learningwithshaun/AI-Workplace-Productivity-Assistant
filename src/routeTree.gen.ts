@@ -9,9 +9,14 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TasksRouteImport } from './routes/tasks'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as ResearchRouteImport } from './routes/research'
+import { Route as MeetingNotesRouteImport } from './routes/meeting-notes'
 import { Route as EmployeesRouteImport } from './routes/employees'
+import { Route as EmailRouteImport } from './routes/email'
+import { Route as ChatRouteImport } from './routes/chat'
 import { Route as AiChatRouteImport } from './routes/ai-chat'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AssetsIndexRouteImport } from './routes/assets.index'
@@ -19,6 +24,11 @@ import { Route as AssetsNewRouteImport } from './routes/assets.new'
 import { Route as AssetsAssetIdRouteImport } from './routes/assets.$assetId'
 import { Route as AssetsAssetIdEditRouteImport } from './routes/assets.$assetId.edit'
 
+const TasksRoute = TasksRouteImport.update({
+  id: '/tasks',
+  path: '/tasks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SettingsRoute = SettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
@@ -29,9 +39,29 @@ const ResetPasswordRoute = ResetPasswordRouteImport.update({
   path: '/reset-password',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResearchRoute = ResearchRouteImport.update({
+  id: '/research',
+  path: '/research',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MeetingNotesRoute = MeetingNotesRouteImport.update({
+  id: '/meeting-notes',
+  path: '/meeting-notes',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EmployeesRoute = EmployeesRouteImport.update({
   id: '/employees',
   path: '/employees',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmailRoute = EmailRouteImport.update({
+  id: '/email',
+  path: '/email',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChatRoute = ChatRouteImport.update({
+  id: '/chat',
+  path: '/chat',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AiChatRoute = AiChatRouteImport.update({
@@ -68,9 +98,14 @@ const AssetsAssetIdEditRoute = AssetsAssetIdEditRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/ai-chat': typeof AiChatRoute
+  '/chat': typeof ChatRoute
+  '/email': typeof EmailRoute
   '/employees': typeof EmployeesRoute
+  '/meeting-notes': typeof MeetingNotesRoute
+  '/research': typeof ResearchRoute
   '/reset-password': typeof ResetPasswordRoute
   '/settings': typeof SettingsRoute
+  '/tasks': typeof TasksRoute
   '/assets/$assetId': typeof AssetsAssetIdRouteWithChildren
   '/assets/new': typeof AssetsNewRoute
   '/assets/': typeof AssetsIndexRoute
@@ -79,9 +114,14 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/ai-chat': typeof AiChatRoute
+  '/chat': typeof ChatRoute
+  '/email': typeof EmailRoute
   '/employees': typeof EmployeesRoute
+  '/meeting-notes': typeof MeetingNotesRoute
+  '/research': typeof ResearchRoute
   '/reset-password': typeof ResetPasswordRoute
   '/settings': typeof SettingsRoute
+  '/tasks': typeof TasksRoute
   '/assets/$assetId': typeof AssetsAssetIdRouteWithChildren
   '/assets/new': typeof AssetsNewRoute
   '/assets': typeof AssetsIndexRoute
@@ -91,9 +131,14 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/ai-chat': typeof AiChatRoute
+  '/chat': typeof ChatRoute
+  '/email': typeof EmailRoute
   '/employees': typeof EmployeesRoute
+  '/meeting-notes': typeof MeetingNotesRoute
+  '/research': typeof ResearchRoute
   '/reset-password': typeof ResetPasswordRoute
   '/settings': typeof SettingsRoute
+  '/tasks': typeof TasksRoute
   '/assets/$assetId': typeof AssetsAssetIdRouteWithChildren
   '/assets/new': typeof AssetsNewRoute
   '/assets/': typeof AssetsIndexRoute
@@ -104,9 +149,14 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/ai-chat'
+    | '/chat'
+    | '/email'
     | '/employees'
+    | '/meeting-notes'
+    | '/research'
     | '/reset-password'
     | '/settings'
+    | '/tasks'
     | '/assets/$assetId'
     | '/assets/new'
     | '/assets/'
@@ -115,9 +165,14 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/ai-chat'
+    | '/chat'
+    | '/email'
     | '/employees'
+    | '/meeting-notes'
+    | '/research'
     | '/reset-password'
     | '/settings'
+    | '/tasks'
     | '/assets/$assetId'
     | '/assets/new'
     | '/assets'
@@ -126,9 +181,14 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/ai-chat'
+    | '/chat'
+    | '/email'
     | '/employees'
+    | '/meeting-notes'
+    | '/research'
     | '/reset-password'
     | '/settings'
+    | '/tasks'
     | '/assets/$assetId'
     | '/assets/new'
     | '/assets/'
@@ -138,9 +198,14 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AiChatRoute: typeof AiChatRoute
+  ChatRoute: typeof ChatRoute
+  EmailRoute: typeof EmailRoute
   EmployeesRoute: typeof EmployeesRoute
+  MeetingNotesRoute: typeof MeetingNotesRoute
+  ResearchRoute: typeof ResearchRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
   SettingsRoute: typeof SettingsRoute
+  TasksRoute: typeof TasksRoute
   AssetsAssetIdRoute: typeof AssetsAssetIdRouteWithChildren
   AssetsNewRoute: typeof AssetsNewRoute
   AssetsIndexRoute: typeof AssetsIndexRoute
@@ -148,6 +213,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/tasks': {
+      id: '/tasks'
+      path: '/tasks'
+      fullPath: '/tasks'
+      preLoaderRoute: typeof TasksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/settings': {
       id: '/settings'
       path: '/settings'
@@ -162,11 +234,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResetPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/research': {
+      id: '/research'
+      path: '/research'
+      fullPath: '/research'
+      preLoaderRoute: typeof ResearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/meeting-notes': {
+      id: '/meeting-notes'
+      path: '/meeting-notes'
+      fullPath: '/meeting-notes'
+      preLoaderRoute: typeof MeetingNotesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/employees': {
       id: '/employees'
       path: '/employees'
       fullPath: '/employees'
       preLoaderRoute: typeof EmployeesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/email': {
+      id: '/email'
+      path: '/email'
+      fullPath: '/email'
+      preLoaderRoute: typeof EmailRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chat': {
+      id: '/chat'
+      path: '/chat'
+      fullPath: '/chat'
+      preLoaderRoute: typeof ChatRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ai-chat': {
@@ -229,9 +329,14 @@ const AssetsAssetIdRouteWithChildren = AssetsAssetIdRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AiChatRoute: AiChatRoute,
+  ChatRoute: ChatRoute,
+  EmailRoute: EmailRoute,
   EmployeesRoute: EmployeesRoute,
+  MeetingNotesRoute: MeetingNotesRoute,
+  ResearchRoute: ResearchRoute,
   ResetPasswordRoute: ResetPasswordRoute,
   SettingsRoute: SettingsRoute,
+  TasksRoute: TasksRoute,
   AssetsAssetIdRoute: AssetsAssetIdRouteWithChildren,
   AssetsNewRoute: AssetsNewRoute,
   AssetsIndexRoute: AssetsIndexRoute,
