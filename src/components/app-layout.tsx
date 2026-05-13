@@ -11,8 +11,10 @@ import {
   Menu,
   X,
   Sparkles,
+  Bell,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 
@@ -100,7 +102,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
       </aside>
 
       <div className="flex flex-1 flex-col min-w-0">
-        <header className="flex h-14 items-center gap-4 border-b border-border px-4 lg:px-6">
+        <header className="flex h-14 items-center gap-3 border-b border-border bg-background/80 px-4 backdrop-blur lg:px-6">
           <Button
             variant="ghost"
             size="icon"
@@ -109,8 +111,20 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
           >
             <Menu className="h-5 w-5" />
           </Button>
-          <div className="text-sm text-muted-foreground hidden sm:block">
-            AI-assisted output. Always review before sending or acting on it.
+          <div className="relative hidden max-w-md flex-1 sm:block">
+            <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+            <Input
+              placeholder="Search tools, prompts, history…"
+              className="h-9 w-full rounded-lg border-border bg-card pl-9 text-sm"
+            />
+          </div>
+          <div className="ml-auto flex items-center gap-1">
+            <Button variant="ghost" size="icon" className="h-9 w-9 text-muted-foreground hover:text-foreground">
+              <Bell className="h-4 w-4" />
+            </Button>
+            <div className="ml-1 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">
+              {user?.email?.[0]?.toUpperCase() ?? 'U'}
+            </div>
           </div>
         </header>
         <main className="flex-1 overflow-auto p-4 lg:p-8">{children}</main>
