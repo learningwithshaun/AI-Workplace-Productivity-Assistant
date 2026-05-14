@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useAuth } from '@/lib/use-auth';
-import { lovable } from '@/integrations/lovable/index';
+import { lovable } from '@/lib/lovable-auth';
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -90,7 +90,7 @@ export function LoginPage() {
   const Wrapper = ({ children }: { children: React.ReactNode }) => (
     <div className="flex min-h-screen flex-col items-center justify-center bg-landing-bg px-4" style={dotGridBg}>
       <div className="mb-6"><Logo /></div>
-      <div className="w-full max-w-sm rounded-xl border border-landing-grid bg-white p-8 shadow-sm">
+      <div className="light w-full max-w-sm rounded-xl border border-border bg-card p-8 text-foreground shadow-sm">
         {children}
       </div>
     </div>
@@ -99,8 +99,8 @@ export function LoginPage() {
   if (signUpSuccess) {
     return (
       <Wrapper>
-        <h2 className="text-center text-lg font-semibold text-landing-dark">Check your email</h2>
-        <p className="mt-1 text-center text-sm text-landing-light-muted">We sent a confirmation link to {email}</p>
+        <h2 className="text-center text-lg font-semibold text-foreground">Check your email</h2>
+        <p className="mt-1 text-center text-sm text-muted-foreground">We sent a confirmation link to {email}</p>
       </Wrapper>
     );
   }
@@ -108,11 +108,11 @@ export function LoginPage() {
   if (resetSent) {
     return (
       <Wrapper>
-        <h2 className="text-center text-lg font-semibold text-landing-dark">Check your email</h2>
-        <p className="mt-1 text-center text-sm text-landing-light-muted">We sent a password reset link to {email}</p>
+        <h2 className="text-center text-lg font-semibold text-foreground">Check your email</h2>
+        <p className="mt-1 text-center text-sm text-muted-foreground">We sent a password reset link to {email}</p>
         <Button
           variant="outline"
-          className="mt-6 w-full rounded-full border-landing-grid text-landing-dark hover:bg-landing-bg"
+          className="mt-6 w-full rounded-full border-border text-foreground hover:bg-accent"
           onClick={() => { setResetSent(false); setIsForgotPassword(false); }}
         >
           Back to sign in
@@ -124,11 +124,11 @@ export function LoginPage() {
   if (isForgotPassword) {
     return (
       <Wrapper>
-        <h2 className="text-center text-lg font-semibold text-landing-dark">Reset password</h2>
-        <p className="mt-1 text-center text-sm text-landing-light-muted">Enter your email to receive a reset link</p>
+        <h2 className="text-center text-lg font-semibold text-foreground">Reset password</h2>
+        <p className="mt-1 text-center text-sm text-muted-foreground">Enter your email to receive a reset link</p>
         <form onSubmit={handleForgotPassword} className="mt-6 space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="reset-email" className="text-sm font-medium text-landing-dark">Email</Label>
+            <Label htmlFor="reset-email" className="text-sm font-medium text-foreground">Email</Label>
             <Input
               id="reset-email"
               type="email"
@@ -136,16 +136,16 @@ export function LoginPage() {
               onChange={e => setEmail(e.target.value)}
               placeholder="you@company.com"
               required
-              className="rounded-lg border-landing-grid bg-white text-landing-dark placeholder:text-landing-light-muted"
+              className="rounded-lg border-input bg-background text-foreground placeholder:text-muted-foreground"
             />
           </div>
           {error && <p className="text-sm text-destructive">{error}</p>}
-          <Button type="submit" className="w-full rounded-full bg-landing-dark text-landing-light hover:bg-landing-dark-subtle" disabled={submitting}>
+          <Button type="submit" className="w-full rounded-full bg-foreground text-background hover:bg-foreground/90" disabled={submitting}>
             {submitting ? 'Sending...' : 'Send reset link'}
           </Button>
           <button
             type="button"
-            className="w-full text-center text-sm text-landing-light-muted hover:text-landing-dark"
+            className="w-full text-center text-sm text-muted-foreground hover:text-foreground"
             onClick={() => { setIsForgotPassword(false); setError(''); }}
           >
             Back to sign in
@@ -157,15 +157,15 @@ export function LoginPage() {
 
   return (
     <Wrapper>
-      <h2 className="text-center text-lg font-semibold text-landing-dark">
+      <h2 className="text-center text-lg font-semibold text-foreground">
         {isSignUp ? 'Create your account' : 'Sign in to your account'}
       </h2>
-      <p className="mt-1 text-center text-sm text-landing-light-muted">
+      <p className="mt-1 text-center text-sm text-muted-foreground">
         {isSignUp ? 'Get started with asset tracking' : 'Welcome back'}
       </p>
       <form onSubmit={handleSubmit} className="mt-6 space-y-4">
         <div className="space-y-2">
-          <Label htmlFor="email" className="text-sm font-medium text-landing-dark">Email</Label>
+          <Label htmlFor="email" className="text-sm font-medium text-foreground">Email</Label>
           <Input
             id="email"
             type="email"
@@ -173,16 +173,16 @@ export function LoginPage() {
             onChange={e => setEmail(e.target.value)}
             placeholder="you@company.com"
             required
-            className="rounded-lg border-landing-grid bg-white text-landing-dark placeholder:text-landing-light-muted"
+            className="rounded-lg border-input bg-background text-foreground placeholder:text-muted-foreground"
           />
         </div>
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <Label htmlFor="password" className="text-sm font-medium text-landing-dark">Password</Label>
+            <Label htmlFor="password" className="text-sm font-medium text-foreground">Password</Label>
             {!isSignUp && (
               <button
                 type="button"
-                className="text-xs text-landing-light-muted hover:text-landing-dark"
+                className="text-xs text-muted-foreground hover:text-foreground"
                 onClick={() => { setIsForgotPassword(true); setError(''); }}
               >
                 Forgot password?
@@ -197,22 +197,22 @@ export function LoginPage() {
             placeholder="••••••••"
             required
             minLength={6}
-            className="rounded-lg border-landing-grid bg-white text-landing-dark placeholder:text-landing-light-muted"
+            className="rounded-lg border-input bg-background text-foreground placeholder:text-muted-foreground"
           />
         </div>
         {error && <p className="text-sm text-destructive">{error}</p>}
-        <Button type="submit" className="w-full rounded-full bg-landing-dark text-landing-light hover:bg-landing-dark-subtle" disabled={submitting || loading}>
+        <Button type="submit" className="w-full rounded-full bg-foreground text-background hover:bg-foreground/90" disabled={submitting || loading}>
           {submitting ? 'Loading...' : isSignUp ? 'Create account' : 'Sign in'}
         </Button>
         <div className="flex items-center gap-3">
-          <Separator className="flex-1 bg-landing-grid" />
-          <span className="text-xs text-landing-light-muted">or</span>
-          <Separator className="flex-1 bg-landing-grid" />
+          <Separator className="flex-1 bg-border" />
+          <span className="text-xs text-muted-foreground">or</span>
+          <Separator className="flex-1 bg-border" />
         </div>
         <Button
           type="button"
           variant="outline"
-          className="w-full rounded-full border-landing-grid text-landing-dark hover:bg-landing-bg"
+          className="w-full rounded-full border-border text-foreground hover:bg-accent"
           disabled={submitting || loading}
           onClick={handleGoogleSignIn}
         >
@@ -224,11 +224,11 @@ export function LoginPage() {
           </svg>
           Sign in with Google
         </Button>
-        <p className="text-center text-sm text-landing-light-muted">
+        <p className="text-center text-sm text-muted-foreground">
           {isSignUp ? 'Already have an account?' : "Don't have an account?"}{' '}
           <button
             type="button"
-            className="text-landing-dark font-medium hover:underline"
+            className="font-medium text-foreground hover:underline"
             onClick={() => { setIsSignUp(!isSignUp); setError(''); }}
           >
             {isSignUp ? 'Sign in' : 'Sign up'}
