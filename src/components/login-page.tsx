@@ -136,7 +136,7 @@ export function LoginPage() {
               onChange={e => setEmail(e.target.value)}
               placeholder="you@company.com"
               required
-              className="rounded-lg border-landing-grid bg-white"
+              className="rounded-lg border-landing-grid bg-white text-landing-dark placeholder:text-landing-light-muted"
             />
           </div>
           {error && <p className="text-sm text-destructive">{error}</p>}
@@ -173,7 +173,7 @@ export function LoginPage() {
             onChange={e => setEmail(e.target.value)}
             placeholder="you@company.com"
             required
-            className="rounded-lg border-landing-grid bg-white"
+            className="rounded-lg border-landing-grid bg-white text-landing-dark placeholder:text-landing-light-muted"
           />
         </div>
         <div className="space-y-2">
@@ -197,7 +197,7 @@ export function LoginPage() {
             placeholder="••••••••"
             required
             minLength={6}
-            className="rounded-lg border-landing-grid bg-white"
+            className="rounded-lg border-landing-grid bg-white text-landing-dark placeholder:text-landing-light-muted"
           />
         </div>
         {error && <p className="text-sm text-destructive">{error}</p>}
