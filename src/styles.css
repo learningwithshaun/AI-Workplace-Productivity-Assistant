@@ -196,3 +196,33 @@
     transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
   }
 }
+
+@keyframes shimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes thinking-dot {
+  0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
+  40% { transform: translateY(-3px); opacity: 1; }
+}
+@keyframes rotate-words {
+  0%, 14% { transform: translateY(0); }
+  16%, 30% { transform: translateY(-1.25rem); }
+  32%, 46% { transform: translateY(-2.5rem); }
+  48%, 62% { transform: translateY(-3.75rem); }
+  64%, 78% { transform: translateY(-5rem); }
+  80%, 100% { transform: translateY(-6.25rem); }
+}
+@keyframes aurora {
+  0% { transform: translate(-50%, 0) rotate(0deg); }
+  100% { transform: translate(-50%, 0) rotate(360deg); }
+}
+
+.animate-shimmer { animation: shimmer 6s linear infinite; }
+.animate-thinking-dot { animation: thinking-dot 1.2s ease-in-out infinite; }
+.animate-rotate-words { animation: rotate-words 12s cubic-bezier(0.83, 0, 0.17, 1) infinite; }
+.animate-aurora { animation: aurora 18s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-shimmer, .animate-thinking-dot, .animate-rotate-words, .animate-aurora { animation: none; }
+}
