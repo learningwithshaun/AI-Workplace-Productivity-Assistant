@@ -83,7 +83,6 @@ Prompts were carefully designed and iteratively refined to ensure:
 - Reliable results
 
 # 📂 Project Structure  
-## 📂 Project Structure
 
 ```text
 src/
@@ -116,6 +115,7 @@ supabase/
 ├── config.toml
 └── functions/
     └── ai-chat/            # Streaming AI proxy edge function
+`text`
 ---
 
 # 🚀 Getting Started
