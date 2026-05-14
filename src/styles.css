@@ -160,8 +160,21 @@
     border-color: var(--color-border);
   }
 
-  input, textarea {
-    color: #000000;
+  input, textarea, select {
+    color: var(--color-foreground);
+    line-height: 1.5;
+    caret-color: var(--color-foreground);
+  }
+
+  input::placeholder, textarea::placeholder {
+    color: var(--color-muted-foreground);
+    opacity: 1;
+  }
+
+  /* Login page (light card) inputs keep dark text for contrast */
+  .light input, .light textarea, .light select {
+    color: oklch(0.16 0 0);
+    caret-color: oklch(0.16 0 0);
   }
 
   html, body {
