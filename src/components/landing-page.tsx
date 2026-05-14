@@ -1,6 +1,7 @@
 import { Link } from '@tanstack/react-router';
 import { ArrowRight, Mail, FileText, ListChecks, Search, MessageSquare, Sparkles, ShieldCheck, Zap, Lock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 
 const tools = [
   { icon: Mail, title: 'Smart Email Generator', description: 'Draft professional emails in seconds with the right tone and length.' },
@@ -16,47 +17,67 @@ const benefits = [
   { icon: Lock, title: 'Your account, your data', description: 'Authenticated workspace. Inputs are sent only to the AI provider used to generate the response.' },
 ];
 
-const dotGridBg = {
-  backgroundImage: `radial-gradient(circle, var(--landing-grid) 1.2px, transparent 1.2px)`,
-  backgroundSize: '24px 24px',
-};
-
 export function LandingPage() {
   return (
-    <div className="min-h-screen bg-landing-bg" style={{ fontFamily: "'Onest', system-ui, sans-serif" }}>
-      <header className="sticky top-0 z-50 border-b border-landing-grid bg-landing-bg/90 backdrop-blur-sm">
-        <div className="mx-auto flex h-12 max-w-[1200px] items-center justify-between px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-background text-foreground">
+      <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
+        <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2">
-            <div className="flex h-6 w-6 items-center justify-center rounded-md bg-landing-dark text-landing-light">
-              <Sparkles className="h-3.5 w-3.5" />
+            <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary text-primary-foreground">
+              <Sparkles className="h-4 w-4" />
             </div>
-            <span className="text-[15px] font-medium tracking-tight text-landing-dark">Workplace AI</span>
+            <span className="text-sm font-semibold tracking-tight">Workplace AI</span>
           </div>
-          <Link to="/" hash="login" className="text-[14px] text-landing-dark/50 hover:text-landing-dark transition-colors">
-            Sign in <ArrowRight className="inline h-3.5 w-3.5 ml-0.5" />
+          <Link
+            to="/"
+            hash="login"
+            className="inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Sign in <ArrowRight className="h-3.5 w-3.5" />
           </Link>
         </div>
       </header>
 
       {/* Hero */}
-      <section className="relative overflow-hidden" style={dotGridBg}>
-        <div className="relative mx-auto max-w-[1100px] px-4 sm:px-6 lg:px-8 pt-16 pb-20 sm:pt-24 sm:pb-28 text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-landing-grid bg-white px-3 py-1 text-xs text-landing-light-muted">
+      <section className="relative overflow-hidden border-b border-border">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-60"
+          style={{
+            backgroundImage:
+              'radial-gradient(circle at 50% 0%, color-mix(in oklab, var(--color-primary) 10%, transparent), transparent 60%)',
+          }}
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.05]"
+          style={{
+            backgroundImage:
+              'radial-gradient(circle, var(--color-foreground) 1px, transparent 1px)',
+            backgroundSize: '28px 28px',
+          }}
+        />
+        <div className="relative mx-auto max-w-4xl px-4 pb-20 pt-20 text-center sm:px-6 sm:pb-28 sm:pt-28 lg:px-8">
+          <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs text-muted-foreground">
             <Sparkles className="h-3.5 w-3.5" /> AI Workplace Productivity Assistant
           </div>
-          <h1 className="mt-6 text-[34px] sm:text-[48px] lg:text-[56px] font-normal leading-[1.05] tracking-tight text-landing-dark">
+          <h1 className="mt-6 text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
             Automate the busywork.
+            <br />
+            <span className="text-muted-foreground">Keep the thinking.</span>
           </h1>
-          <h1 className="text-[34px] sm:text-[48px] lg:text-[56px] font-normal leading-[1.05] tracking-tight text-landing-light-muted">
-            Keep the thinking.
-          </h1>
-          <p className="mx-auto mt-6 max-w-xl text-[17px] leading-relaxed text-landing-light-muted">
+          <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
             Five focused AI tools — emails, meeting summaries, task plans, research briefs, and a chatbot — in one clean workspace. Built for professionals who want speed without losing judgement.
           </p>
-          <div className="mt-10 flex justify-center gap-3">
+          <div className="mt-10 flex flex-wrap justify-center gap-3">
             <Link to="/" hash="login">
-              <Button size="lg" className="rounded-full gap-2 min-h-[48px] bg-landing-dark px-8 text-[15px] font-medium text-landing-light hover:bg-landing-dark-subtle">
+              <Button size="lg" className="gap-2 rounded-full px-7">
                 Get started <ArrowRight className="h-4 w-4" />
+              </Button>
+            </Link>
+            <Link to="/" hash="login">
+              <Button size="lg" variant="outline" className="rounded-full px-7">
+                Sign in
               </Button>
             </Link>
           </div>
@@ -64,77 +85,95 @@ export function LandingPage() {
       </section>
 
       {/* Tools */}
-      <section className="bg-white py-20 sm:py-28">
-        <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
-          <div className="mb-14">
-            <p className="mb-3 text-[16px] text-landing-dark">Tools</p>
-            <h2 className="text-[28px] sm:text-[36px] lg:text-[40px] font-normal tracking-tight text-landing-dark leading-tight">
+      <section className="border-b border-border py-20 sm:py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-12 max-w-2xl">
+            <p className="mb-2 text-xs font-medium uppercase tracking-wider text-muted-foreground">Tools</p>
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
               Five tools, one workspace
             </h2>
+            <p className="mt-3 text-base text-muted-foreground">
+              Every tool follows the same structure: structured prompts, editable outputs, responsible-AI guardrails.
+            </p>
           </div>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {tools.map(t => (
-              <div key={t.title} className="rounded-xl border border-landing-grid bg-landing-bg p-6 transition-colors hover:border-landing-dark/20">
-                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-landing-dark text-landing-light">
+              <Card
+                key={t.title}
+                className="group p-6 transition-colors hover:border-primary/40 hover:bg-accent/30"
+              >
+                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-primary-foreground">
                   <t.icon className="h-5 w-5" />
                 </div>
-                <h3 className="text-[17px] font-semibold text-landing-dark">{t.title}</h3>
-                <p className="mt-1.5 text-[15px] leading-relaxed text-landing-light-muted">{t.description}</p>
-              </div>
+                <h3 className="text-base font-semibold">{t.title}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{t.description}</p>
+              </Card>
             ))}
           </div>
         </div>
       </section>
 
       {/* Benefits */}
-      <section className="py-20 sm:py-28 bg-landing-bg" style={dotGridBg}>
-        <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
-          <div className="mb-14">
-            <p className="mb-3 text-[16px] text-landing-dark">Why Workplace AI</p>
-            <h2 className="text-[28px] sm:text-[36px] lg:text-[40px] font-normal tracking-tight text-landing-dark leading-tight">
+      <section className="border-b border-border py-20 sm:py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-12 max-w-2xl">
+            <p className="mb-2 text-xs font-medium uppercase tracking-wider text-muted-foreground">Why Workplace AI</p>
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
               Speed with guardrails
             </h2>
           </div>
-          <div className="grid gap-5 sm:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-3">
             {benefits.map(b => (
-              <div key={b.title} className="rounded-xl border border-landing-grid bg-white p-6">
-                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-landing-dark text-landing-light">
+              <Card key={b.title} className="p-6">
+                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-secondary text-foreground">
                   <b.icon className="h-5 w-5" />
                 </div>
-                <h3 className="text-[17px] font-semibold text-landing-dark">{b.title}</h3>
-                <p className="mt-1.5 text-[15px] leading-relaxed text-landing-light-muted">{b.description}</p>
-              </div>
+                <h3 className="text-base font-semibold">{b.title}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{b.description}</p>
+              </Card>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="bg-white py-24 sm:py-32">
-        <div className="mx-auto max-w-[700px] px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-[28px] sm:text-[36px] lg:text-[44px] font-normal leading-tight tracking-tight text-landing-dark">
-            Ready to ship more, faster?
-          </h2>
-          <p className="mx-auto mt-4 max-w-lg text-[17px] text-landing-light-muted">
-            Sign up free and start using all five tools in under a minute.
-          </p>
-          <div className="mt-10">
-            <Link to="/" hash="login">
-              <Button size="lg" className="rounded-full gap-2 min-h-[48px] bg-landing-dark px-8 text-[15px] font-medium text-landing-light hover:bg-landing-dark-subtle">
-                Get started <ArrowRight className="h-4 w-4" />
-              </Button>
-            </Link>
-          </div>
+      <section className="py-24 sm:py-28">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+          <Card className="relative overflow-hidden p-10 text-center sm:p-14">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 opacity-50"
+              style={{
+                backgroundImage:
+                  'radial-gradient(circle at 50% 0%, color-mix(in oklab, var(--color-primary) 14%, transparent), transparent 70%)',
+              }}
+            />
+            <div className="relative">
+              <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
+                Ready to ship more, faster?
+              </h2>
+              <p className="mx-auto mt-3 max-w-md text-base text-muted-foreground">
+                Sign up free and start using all five tools in under a minute.
+              </p>
+              <div className="mt-8">
+                <Link to="/" hash="login">
+                  <Button size="lg" className="gap-2 rounded-full px-7">
+                    Get started <ArrowRight className="h-4 w-4" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </Card>
         </div>
       </section>
 
-      <footer className="border-t border-landing-grid bg-landing-bg py-6 sm:py-8">
-        <div className="mx-auto flex max-w-[1200px] flex-col items-center justify-between gap-2 px-4 sm:flex-row sm:px-6 lg:px-8">
+      <footer className="border-t border-border py-8">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 sm:flex-row sm:px-6 lg:px-8">
           <div className="flex items-center gap-2">
-            <Sparkles className="h-4 w-4 text-landing-dark" />
-            <span className="text-[15px] text-landing-light-muted">Workplace AI</span>
+            <Sparkles className="h-4 w-4 text-muted-foreground" />
+            <span className="text-sm text-muted-foreground">Workplace AI</span>
           </div>
-          <p className="text-xs text-landing-light-muted/70">
+          <p className="text-xs text-muted-foreground">
             AI-generated content may be inaccurate. Always review before use. © {new Date().getFullYear()}
           </p>
         </div>
