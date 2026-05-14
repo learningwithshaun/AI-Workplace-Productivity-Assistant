@@ -83,7 +83,17 @@ Prompts were carefully designed and iteratively refined to ensure:
 - Reliable results
 
 # 📂 Project Structure  
-
+src/
+├── routes/
+│   ├── email.tsx
+│   ├── meeting-notes.tsx
+│   ├── tasks.tsx
+│   ├── research.tsx
+│   └── chat.tsx
+├── components/
+├── lib/
+└── integrations/
+    └── supabase/
 ---
 
 # 🚀 Getting Started
