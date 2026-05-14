@@ -122,11 +122,3 @@ supabase/
 ├── config.toml
 └── functions/
     └── ai-chat/            # Streaming AI proxy edge function
-
-bun install
-bun dev
-
-
----
-
-You can paste this directly into GitHub and it will render perfectly 👍
