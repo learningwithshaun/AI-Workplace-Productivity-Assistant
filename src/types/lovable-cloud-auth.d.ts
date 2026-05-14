@@ -1,3 +1,5 @@
+import '@lovable.dev/cloud-auth-js';
+
 declare module '@lovable.dev/cloud-auth-js' {
   interface LovableAuth {
     signInWithOAuth(
@@ -6,3 +8,5 @@ declare module '@lovable.dev/cloud-auth-js' {
     ): Promise<SignInWithOAuthResult>;
   }
 }
+
+export {};
