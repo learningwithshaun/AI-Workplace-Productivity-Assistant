@@ -84,16 +84,30 @@ Prompts were carefully designed and iteratively refined to ensure:
 
 # 📂 Project Structure  
 src/
-├── routes/
-│   ├── email.tsx
-│   ├── meeting-notes.tsx
-│   ├── tasks.tsx
-│   ├── research.tsx
-│   └── chat.tsx
+├── routes/                 # File-based routes (TanStack Router)
+│   ├── __root.tsx          # Root layout (html shell, fonts, meta)
+│   ├── index.tsx           # Landing / dashboard switch
+│   ├── email.tsx           # Smart Email Generator
+│   ├── meeting-notes.tsx   # Meeting Notes Summarizer
+│   ├── tasks.tsx           # AI Task Planner
+│   ├── research.tsx        # Research Assistant
+│   └── chat.tsx            # Chatbot
 ├── components/
+│   ├── app-layout.tsx      # Sidebar + top bar shell
+│   ├── ai-tool-shell.tsx   # Reusable form → streaming output card
+│   ├── dashboard-view.tsx
+│   ├── landing-page.tsx
+│   ├── login-page.tsx
+│   └── ui/                 # shadcn/ui primitives
 ├── lib/
-└── integrations/
-    └── supabase/
+│   ├── ai-stream.ts        # Client-side SSE stream parser
+│   ├── use-auth.ts         # Supabase auth hook
+│   └── utils.ts
+├── integrations/supabase/  # Auto-generated Supabase client + types
+└── styles.css              # Tailwind v4 + design tokens
+supabase/
+├── config.toml
+└── functions/ai-chat/      # Edge function: streaming AI proxy
 ---
 
 # 🚀 Getting Started
