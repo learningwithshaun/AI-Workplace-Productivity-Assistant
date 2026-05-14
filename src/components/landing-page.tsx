@@ -40,43 +40,88 @@ export function LandingPage() {
 
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-border">
+        {/* Ambient glow */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-60"
+          className="pointer-events-none absolute inset-0"
           style={{
             backgroundImage:
-              'radial-gradient(circle at 50% 0%, color-mix(in oklab, var(--color-primary) 10%, transparent), transparent 60%)',
+              'radial-gradient(ellipse 80% 50% at 50% -10%, color-mix(in oklab, var(--color-primary) 18%, transparent), transparent 70%)',
           }}
         />
+        {/* Dot grid */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.05]"
+          className="pointer-events-none absolute inset-0 opacity-[0.06]"
           style={{
             backgroundImage:
               'radial-gradient(circle, var(--color-foreground) 1px, transparent 1px)',
             backgroundSize: '28px 28px',
+            maskImage: 'radial-gradient(ellipse 70% 60% at 50% 30%, black, transparent 80%)',
+            WebkitMaskImage: 'radial-gradient(ellipse 70% 60% at 50% 30%, black, transparent 80%)',
           }}
         />
-        <div className="relative mx-auto max-w-4xl px-4 pb-20 pt-20 text-center sm:px-6 sm:pb-28 sm:pt-28 lg:px-8">
-          <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs text-muted-foreground">
-            <Sparkles className="h-3.5 w-3.5" /> AI Workplace Productivity Assistant
+        {/* Aurora beams */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -top-24 left-1/2 h-[420px] w-[820px] -translate-x-1/2 rounded-full opacity-40 blur-3xl animate-aurora"
+          style={{
+            background:
+              'conic-gradient(from 180deg at 50% 50%, color-mix(in oklab, var(--color-primary) 35%, transparent), transparent 30%, color-mix(in oklab, var(--color-primary) 20%, transparent) 60%, transparent 80%)',
+          }}
+        />
+
+        <div className="relative mx-auto max-w-4xl px-4 pb-24 pt-20 text-center sm:px-6 sm:pb-32 sm:pt-28 lg:px-8">
+          {/* Live status pill */}
+          <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/80 px-3 py-1 text-xs text-muted-foreground backdrop-blur">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-60" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+            </span>
+            AI Workplace Productivity Assistant
           </div>
-          <h1 className="mt-6 text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
-            Automate the busywork.
-            <br />
-            <span className="text-muted-foreground">Keep the thinking.</span>
+
+          <h1 className="mt-7 text-4xl font-semibold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
+            <span className="block bg-gradient-to-b from-foreground to-foreground/70 bg-clip-text text-transparent">
+              Automate the busywork.
+            </span>
+            <span className="mt-2 block bg-gradient-to-r from-primary via-foreground to-primary bg-[length:200%_auto] bg-clip-text text-transparent animate-shimmer">
+              Keep the thinking.
+            </span>
           </h1>
+
+          {/* Generating indicator */}
+          <div className="mx-auto mt-7 inline-flex items-center gap-2.5 rounded-full border border-border bg-card/60 px-4 py-1.5 text-sm text-muted-foreground backdrop-blur">
+            <span className="flex items-end gap-1">
+              <span className="block h-1.5 w-1.5 rounded-full bg-primary animate-thinking-dot" style={{ animationDelay: '0ms' }} />
+              <span className="block h-1.5 w-1.5 rounded-full bg-primary animate-thinking-dot" style={{ animationDelay: '180ms' }} />
+              <span className="block h-1.5 w-1.5 rounded-full bg-primary animate-thinking-dot" style={{ animationDelay: '360ms' }} />
+            </span>
+            <span>Generating your</span>
+            <span className="relative inline-block h-5 w-[7.5rem] overflow-hidden text-left">
+              <span className="absolute inset-x-0 animate-rotate-words font-medium text-foreground">
+                <span className="block h-5 leading-5">email draft</span>
+                <span className="block h-5 leading-5">meeting recap</span>
+                <span className="block h-5 leading-5">task plan</span>
+                <span className="block h-5 leading-5">research brief</span>
+                <span className="block h-5 leading-5">next reply</span>
+                <span className="block h-5 leading-5">email draft</span>
+              </span>
+            </span>
+          </div>
+
           <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Five focused AI tools — emails, meeting summaries, task plans, research briefs, and a chatbot — in one clean workspace. Built for professionals who want speed without losing judgement.
+            Five focused AI tools in one clean workspace. Built for professionals who want speed without losing judgement.
           </p>
+
           <div className="mt-10 flex flex-wrap justify-center gap-3">
             <Link to="/" hash="login">
-              <Button size="lg" className="gap-2 rounded-full px-7">
+              <Button size="lg" className="gap-2 rounded-full px-7 shadow-lg shadow-primary/20 transition-transform hover:-translate-y-0.5">
                 Get started <ArrowRight className="h-4 w-4" />
               </Button>
             </Link>
             <Link to="/" hash="login">
-              <Button size="lg" variant="outline" className="rounded-full px-7">
+              <Button size="lg" variant="outline" className="rounded-full px-7 backdrop-blur">
                 Sign in
               </Button>
             </Link>
