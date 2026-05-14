@@ -83,31 +83,39 @@ Prompts were carefully designed and iteratively refined to ensure:
 - Reliable results
 
 # 📂 Project Structure  
+## 📂 Project Structure
+
+```text
 src/
-├── routes/                 # File-based routes (TanStack Router)
-│   ├── __root.tsx          # Root layout (html shell, fonts, meta)
+├── routes/                 # File-based routing (TanStack Router)
+│   ├── __root.tsx          # Root layout
 │   ├── index.tsx           # Landing / dashboard switch
 │   ├── email.tsx           # Smart Email Generator
-│   ├── meeting-notes.tsx   # Meeting Notes Summarizer
+│   ├── meeting-notes.tsx   # Meeting Notes Summariser
 │   ├── tasks.tsx           # AI Task Planner
 │   ├── research.tsx        # Research Assistant
-│   └── chat.tsx            # Chatbot
+│   └── chat.tsx            # AI Chatbot
+│
 ├── components/
-│   ├── app-layout.tsx      # Sidebar + top bar shell
-│   ├── ai-tool-shell.tsx   # Reusable form → streaming output card
+│   ├── app-layout.tsx      # Sidebar + top bar layout
+│   ├── ai-tool-shell.tsx   # Reusable form → streaming output UI
 │   ├── dashboard-view.tsx
 │   ├── landing-page.tsx
 │   ├── login-page.tsx
-│   └── ui/                 # shadcn/ui primitives
+│   └── ui/                 # shadcn/ui components
+│
 ├── lib/
-│   ├── ai-stream.ts        # Client-side SSE stream parser
-│   ├── use-auth.ts         # Supabase auth hook
+│   ├── ai-stream.ts        # SSE streaming parser
+│   ├── use-auth.ts         # Supabase authentication hook
 │   └── utils.ts
-├── integrations/supabase/  # Auto-generated Supabase client + types
-└── styles.css              # Tailwind v4 + design tokens
+│
+├── integrations/supabase/  # Generated Supabase client + types
+└── styles.css              # Tailwind + design tokens
+
 supabase/
 ├── config.toml
-└── functions/ai-chat/      # Edge function: streaming AI proxy
+└── functions/
+    └── ai-chat/            # Streaming AI proxy edge function
 ---
 
 # 🚀 Getting Started
