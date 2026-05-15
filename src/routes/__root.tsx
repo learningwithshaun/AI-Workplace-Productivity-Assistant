@@ -41,6 +41,8 @@ export const Route = createRootRoute({
       { name: "twitter:description", content: "Five focused AI tools for professionals: smart email drafts, meeting summaries, task plans, research briefs, and a chatbot." },
       { name: "twitter:card", content: "summary_large_image" },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/bf6eac57-ef28-44e8-952b-370716e4db4a/id-preview-4923c132--942f9dc2-c7b7-493e-8763-e71b83d2c75c.lovable.app-1778829600588.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/bf6eac57-ef28-44e8-952b-370716e4db4a/id-preview-4923c132--942f9dc2-c7b7-493e-8763-e71b83d2c75c.lovable.app-1778829600588.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
