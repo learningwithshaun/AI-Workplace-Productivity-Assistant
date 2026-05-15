@@ -6,9 +6,9 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
-import { Sparkles } from 'lucide-react';
 import { toast } from 'sonner';
 import { Link } from '@tanstack/react-router';
+import logoUrl from '@/assets/logo.svg';
 
 const dotGridBg = {
   backgroundImage: `radial-gradient(circle, var(--landing-grid) 1.2px, transparent 1.2px)`,
