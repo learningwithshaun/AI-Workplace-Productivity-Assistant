@@ -79,18 +79,18 @@ export function LoginPage() {
   };
 
   const Logo = () => (
-    <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-      <div className="flex h-6 w-6 items-center justify-center rounded-md bg-landing-dark text-landing-light">
-        <Sparkles className="h-3.5 w-3.5" />
+    <Link to="/" className="flex flex-col items-center gap-3 hover:opacity-90 transition-opacity">
+      <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-card border border-border shadow-sm">
+        <img src={logoUrl} alt="Workplace AI" className="h-9 w-9 [filter:invert(1)_brightness(1.1)]" />
       </div>
-      <span className="text-[15px] font-medium text-landing-dark tracking-tight">Workplace AI</span>
+      <span className="text-[15px] font-medium text-foreground tracking-tight">Workplace AI</span>
     </Link>
   );
 
   const Wrapper = ({ children }: { children: React.ReactNode }) => (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-landing-bg px-4" style={dotGridBg}>
-      <div className="mb-6"><Logo /></div>
-      <div className="light w-full max-w-sm rounded-xl border border-border bg-card p-8 text-foreground shadow-sm">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-background px-4 py-10" style={dotGridBg}>
+      <div className="mb-8"><Logo /></div>
+      <div className="w-full max-w-sm rounded-xl border border-border bg-card p-8 text-foreground shadow-lg">
         {children}
       </div>
     </div>
