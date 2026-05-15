@@ -15,6 +15,28 @@ const dotGridBg = {
   backgroundSize: '24px 24px',
 };
 
+function LoginLogo() {
+  return (
+    <Link to="/" className="flex flex-col items-center gap-3 transition-opacity hover:opacity-90">
+      <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-border bg-card shadow-sm">
+        <img src={logoUrl} alt="Workplace AI" className="h-9 w-9 [filter:invert(1)_brightness(1.1)]" />
+      </div>
+      <span className="text-[15px] font-medium tracking-tight text-foreground">Workplace AI</span>
+    </Link>
+  );
+}
+
+function LoginShell({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="flex min-h-screen flex-col items-center justify-center bg-background px-4 py-10" style={dotGridBg}>
+      <div className="mb-8"><LoginLogo /></div>
+      <div className="w-full max-w-sm rounded-xl border border-border bg-card p-8 text-foreground shadow-lg">
+        {children}
+      </div>
+    </div>
+  );
+}
+
 export function LoginPage() {
   const { signIn, signUp, loading } = useAuth();
   const [email, setEmail] = useState('');
@@ -78,36 +100,18 @@ export function LoginPage() {
     }
   };
 
-  const Logo = () => (
-    <Link to="/" className="flex flex-col items-center gap-3 hover:opacity-90 transition-opacity">
-      <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-card border border-border shadow-sm">
-        <img src={logoUrl} alt="Workplace AI" className="h-9 w-9 [filter:invert(1)_brightness(1.1)]" />
-      </div>
-      <span className="text-[15px] font-medium text-foreground tracking-tight">Workplace AI</span>
-    </Link>
-  );
-
-  const Wrapper = ({ children }: { children: React.ReactNode }) => (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-background px-4 py-10" style={dotGridBg}>
-      <div className="mb-8"><Logo /></div>
-      <div className="w-full max-w-sm rounded-xl border border-border bg-card p-8 text-foreground shadow-lg">
-        {children}
-      </div>
-    </div>
-  );
-
   if (signUpSuccess) {
     return (
-      <Wrapper>
+      <LoginShell>
         <h2 className="text-center text-lg font-semibold text-foreground">Check your email</h2>
         <p className="mt-1 text-center text-sm text-muted-foreground">We sent a confirmation link to {email}</p>
-      </Wrapper>
+      </LoginShell>
     );
   }
 
   if (resetSent) {
     return (
-      <Wrapper>
+      <LoginShell>
         <h2 className="text-center text-lg font-semibold text-foreground">Check your email</h2>
         <p className="mt-1 text-center text-sm text-muted-foreground">We sent a password reset link to {email}</p>
         <Button
@@ -117,13 +121,13 @@ export function LoginPage() {
         >
           Back to sign in
         </Button>
-      </Wrapper>
+      </LoginShell>
     );
   }
 
   if (isForgotPassword) {
     return (
-      <Wrapper>
+      <LoginShell>
         <h2 className="text-center text-lg font-semibold text-foreground">Reset password</h2>
         <p className="mt-1 text-center text-sm text-muted-foreground">Enter your email to receive a reset link</p>
         <form onSubmit={handleForgotPassword} className="mt-6 space-y-4">
@@ -151,12 +155,12 @@ export function LoginPage() {
             Back to sign in
           </button>
         </form>
-      </Wrapper>
+      </LoginShell>
     );
   }
 
   return (
-    <Wrapper>
+    <LoginShell>
       <h2 className="text-center text-lg font-semibold text-foreground">
         {isSignUp ? 'Create your account' : 'Sign in to your account'}
       </h2>
@@ -235,6 +239,6 @@ export function LoginPage() {
           </button>
         </p>
       </form>
-    </Wrapper>
+    </LoginShell>
   );
 }
