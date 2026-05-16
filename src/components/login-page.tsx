@@ -17,11 +17,14 @@ const dotGridBg = {
 
 function LoginLogo() {
   return (
-    <Link to="/" className="flex flex-col items-center gap-3 transition-opacity hover:opacity-90">
-      <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-border bg-card shadow-sm">
-        <img src={logoUrl} alt="Workplace AI" className="h-9 w-9 [filter:invert(1)_brightness(1.1)]" />
+    <Link to="/" className="flex flex-col items-center gap-4 transition-opacity hover:opacity-90">
+      <div className="flex h-18 w-18 items-center justify-center rounded-3xl border border-border/80 bg-card/90 p-4 shadow-[0_20px_60px_-30px_rgba(255,255,255,0.35)] backdrop-blur-sm">
+        <img src={logoUrl} alt="AI Workplace Productivity Assistant logo" className="h-full w-full object-contain [filter:invert(1)_brightness(1.2)_contrast(1.05)]" />
       </div>
-      <span className="text-[15px] font-medium tracking-tight text-foreground">Workplace AI</span>
+      <div className="space-y-1 text-center">
+        <span className="block text-base font-semibold tracking-tight text-foreground">Workplace AI</span>
+        <span className="block text-sm text-muted-foreground">AI Workplace Productivity Assistant</span>
+      </div>
     </Link>
   );
 }
@@ -29,8 +32,8 @@ function LoginLogo() {
 function LoginShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-background px-4 py-10" style={dotGridBg}>
-      <div className="mb-8"><LoginLogo /></div>
-      <div className="w-full max-w-sm rounded-xl border border-border bg-card p-8 text-foreground shadow-lg">
+      <div className="mb-10 sm:mb-12"><LoginLogo /></div>
+      <div className="w-full max-w-sm rounded-2xl border border-border bg-card/95 p-8 text-foreground shadow-2xl backdrop-blur-sm sm:p-9">
         {children}
       </div>
     </div>
