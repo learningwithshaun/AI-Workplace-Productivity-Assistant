@@ -161,14 +161,21 @@
   }
 
   input, textarea, select {
+    overflow: visible;
+    min-height: 0;
     color: var(--color-foreground);
-    line-height: 1.5;
+    line-height: 1.25;
     caret-color: var(--color-foreground);
+    -webkit-text-fill-color: currentColor;
   }
 
   input::placeholder, textarea::placeholder {
     color: var(--color-muted-foreground);
     opacity: 1;
+  }
+
+  input {
+    vertical-align: middle;
   }
 
   /* Login page (light card) inputs keep dark text for contrast */
